@@ -6,8 +6,8 @@ from splinter import Browser
 import time
 
 
-def init_browswer():
-# set exec path for chromedriver
+def init_browser():
+    # set exec path for chromedriver
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
     return Browser('chrome', **executable_path, headless=False)
 
@@ -119,7 +119,7 @@ def scrape_info():
     fact_df.set_index('Attribute',inplace=True)
 
     # set to html table
-    fact_df_html = fact_df.to_html()
+    fact_df_html = fact_df.to_html(escape=False)
 
     # strip new lines chars
     cln_fact_df_html = fact_df_html.replace('\n','')

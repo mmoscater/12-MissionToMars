@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>The Red Planet!</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body style="background-color: #241721">
+    <div class="container-fluid" style="background-color: #cc1e2c">
+      <div class="jumbotron text-center" style='background-color: #241721'>
+        <h1 class="display-1" style='color:#cc1e2c'>Mars!</h1>
+        <p style="color: whitesmoke">Your one stop shop for everything Mars</p>
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button" style="background-color: #FF5435; border-color:#40152a">Get Latest Data!</a></p>
+      </div>
+      <div>
+          <h2 style="color:whitesmoke">Latest News from Mars:</h2>
+          <h3 style="color: #40152a">{{ mars_info.news_title }}
+          <br>
+          <small style="color:lightgrey">{{ mars_info.news_p }}</small>
+        </h2>
+      </div>
+      <div class="row">
+          <div class="col-md-8">
+              <h3 style="color: whitesmoke">Featured Mars Image:</h3>
+              <img src="{{ mars_info.featured_image_url }}" class="img-fluid rounded" alt="featued image" style="height: 85%;width: 85%;">
+          </div>
+          <div class="col-md-4">
+              <div class="container-fluid" style="background:#40152a; border-color: #241721">
+              <div class='card' >
+                  <div class="card-title">
+                      <h3 style="color:whitesmoke">Latest Weather on Mars:</h5>
+                  </div>      
+                  <div class="card-body">
+                      <p class="lead" style="color: whitesmoke">{{  mars_info.mars_weather  }}</p>
+                  </div>
+              </div>
+              <div style="background-color: whitesmoke">
+                  {{ mars_info.mars_facts | safe }}
+                
+              </div>
+              <br>
+              </div>
+          </div>
+
+      </div>
+      <div class="row">
+          <div class="container">
+          <h1 style="color:whitesmoke">Mars Hemispheres:</h1>
+          </div>
+      </div>
+
+      
+      <div class="container" >
+            
+      <div class="row align-items-center">
+            {% for h in mars_info.mars_hems %}
+            <div class="col-md-6">
+              <div class="card col align-self-center" style="background-color: whitesmoke">
+                  <img class="card-img-top" src="{{ h.img_url }}" alt="cap" style="height: 100%; width:100%">
+                  <div class="card-title"><h3>{{ h.title }}</h3></div>
+                <br>
+              </div>
+            </div>
+            
+      {% endfor %}  
+        </div>
+          
+      </div>
+      
+    </div>
+    </div>
+  </body>
+<footer>
+    <p style="color: whitesmoke">Copyright Moscater - UCF Coding Bootcamp</p>
+</footer>
+</html>
